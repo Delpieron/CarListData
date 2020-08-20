@@ -13,12 +13,12 @@ using System.Windows.Shapes;
 namespace CarListData
 {
     /// <summary>
-    /// Logika interakcji dla klasy AddCarWindow.xaml
+    /// Logika działania okna dodawania samochodu
     /// </summary>
     public partial class AddCarWindow : Window
     {
         readonly CarListDbContext context;
-        CarList NewCar = new CarList();
+        readonly CarList NewCar = new CarList();
 
         public AddCarWindow(CarListDbContext context)
         {

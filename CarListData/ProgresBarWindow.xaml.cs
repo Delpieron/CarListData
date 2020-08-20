@@ -16,34 +16,34 @@ using System.Windows.Shapes;
 namespace CarListData
 {
     /// <summary>
-    /// Logika interakcji dla klasy ProgresBarWindow.xaml
+    /// Logika działania Paska postępu
     /// </summary>
     public partial class ProgresBarWindow : Window
     {
-        private bool isWorking { get; set; }
+        private bool IsWorking { get; set; }
         public ProgresBarWindow()
         {
             InitializeComponent();
-            isWorking = true;
+            IsWorking = true;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             BackgroundWorker worker = new BackgroundWorker();
             worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
+            worker.DoWork += Worker_DoWork;
             worker.ProgressChanged += Worker_ProgressChanged;
 
             worker.RunWorkerAsync();
         }
 
-        private void worker_DoWork(object sender, EventArgs e)
+        private void Worker_DoWork(object sender, EventArgs e)
         {
                 for (int i = 0; i < 100; i++)
                 {
                     (sender as BackgroundWorker).ReportProgress(i);
                     Thread.Sleep(100);
-                    if (!isWorking)
+                    if (!IsWorking)
                     {
                     break;
                     
@@ -59,7 +59,7 @@ namespace CarListData
 
         private void CancelProgress(object sender, RoutedEventArgs e)
         {
-            isWorking = false;
+            IsWorking = false;
             Close();
         }
     }

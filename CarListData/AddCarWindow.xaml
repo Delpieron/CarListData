@@ -24,16 +24,16 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Product Name"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="RegistrationNumber"/>
                     <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding RegistrationNumber}"/>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="Description"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Vin"/>
                     <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Vin}"/>
 
-                    <Label Grid.Row="2" Grid.Column="0" Content="Price"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Model"/>
                     <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Model}"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Unit"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Brand"/>
                     <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding Brand}"/>
 
                     <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Content="Add" Margin="5" Click="AddCar"

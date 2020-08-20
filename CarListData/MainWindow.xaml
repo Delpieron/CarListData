@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarListData"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="458" Width="800">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -17,11 +17,11 @@
         <DataGrid x:Name="CarDG" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                   Grid.Row="1" ColumnWidth="*" Margin="5" IsSynchronizedWithCurrentItem="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Product Id" Binding="{Binding CarId}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding RegistrationNumber}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Vin}"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Model}"/>
-                <DataGridTextColumn Header="Unit" Binding="{Binding Brand}"/>
+                <DataGridTextColumn Header="CarId" Binding="{Binding CarId}"/>
+                <DataGridTextColumn Header="RegistrationNumber" Binding="{Binding RegistrationNumber}"/>
+                <DataGridTextColumn Header="Vin" Binding="{Binding Vin}"/>
+                <DataGridTextColumn Header="Model" Binding="{Binding Model}"/>
+                <DataGridTextColumn Header="Brand" Binding="{Binding Brand}"/>
 
                 <DataGridTemplateColumn Header="Edit Car">
                     <DataGridTemplateColumn.CellTemplate>

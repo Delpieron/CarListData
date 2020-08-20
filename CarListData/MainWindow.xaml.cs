@@ -16,12 +16,11 @@ using System.Windows.Shapes;
 namespace CarListData
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika działania okna głównego
     /// </summary>
     public partial class MainWindow : Window
     {
         readonly CarListDbContext context;
-        CarList NewCar = new CarList();
         CarList selectedCar = new CarList();
 
         public MainWindow(CarListDbContext context)
