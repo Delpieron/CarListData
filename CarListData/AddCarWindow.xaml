@@ -36,9 +36,12 @@
                     <Label Grid.Row="3" Grid.Column="0" Content="Brand"/>
                     <TextBox Grid.Row="3" Grid.Column="4"  Text="{Binding Brand}"/>
 
-                    <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Content="Add" Margin="5" Click="AddCar"
-                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button Grid.Row="4" Width="150" Height="25"  Content="Add"  Click="AddCar"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="99,45,0,0"/>
+                    <Button Width="150" Content="cancel" Height="25" Click="AddCancel" Grid.Column="1" Margin="119,42,120,-6" Grid.Row="4"
+                            />
                 </Grid>
+
             </StackPanel>
         </Border>
         <Popup Name="myPopupIsOpen" IsOpen="True" 

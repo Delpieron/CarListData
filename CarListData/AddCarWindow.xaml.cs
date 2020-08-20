@@ -84,5 +84,12 @@ namespace CarListData
             }
             
         }
+
+        private void AddCancel(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow(context);
+            main.Show();
+            Close();
+        }
     }
 }
