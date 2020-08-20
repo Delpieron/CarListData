@@ -61,17 +61,18 @@ namespace CarListData
         {
             AddCarWindow addCarWindow = new AddCarWindow(context);
             addCarWindow.Show();
-        }
-
-        private void RefreshGrid(object sender, RoutedEventArgs e)
-        {
-            GetCars();
+            Close();
         }
 
         private void OpenProgressBarWindow(object sender, RoutedEventArgs e)
         {
             ProgresBarWindow progresBarWindow = new ProgresBarWindow();
             progresBarWindow.Show();
+        }
+        
+        private void RefreshGrid(object sender, RoutedEventArgs e)
+        {
+            GetCars();
         }
     }
 }
