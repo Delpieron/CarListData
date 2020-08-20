@@ -22,6 +22,7 @@
                 <DataGridTextColumn Header="Description" Binding="{Binding Vin}"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Model}"/>
                 <DataGridTextColumn Header="Unit" Binding="{Binding Brand}"/>
+
                 <DataGridTemplateColumn Header="Edit Car">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -38,43 +39,19 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="5,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Margin="5" BorderThickness="1" BorderBrush="Black">
-                <StackPanel  Margin="5">
-                    <Label Content="Add new product" FontWeight="Bold"
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" Margin="5"/>
-                    <Grid Name="NewCarGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Content="Product Name"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding RegistrationNumber}"/>
-                        <Label Grid.Row="1" Grid.Column="0" Content="Description"/>
-                        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Vin}"/>
-                        <Label Grid.Row="2" Grid.Column="0" Content="Price"/>
-                        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Model}"/>
-                        <Label Grid.Row="3" Grid.Column="0" Content="Unit"/>
-                        <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding Brand}"/>
-                        <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Content="Add" Margin="5" Click="AddItem"
-                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                </StackPanel>
-            </Border>
-            <Border Grid.Column="1" Margin="5" BorderThickness="1" BorderBrush="Black">
-                <StackPanel Margin="5">
+            <Button Width="150" Click="AddCarWindow"
+                                Content="Add" Margin="6,-228,0,0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+            <Button Content="Refresh" HorizontalAlignment="Left" Margin="314,-228,0,0" VerticalAlignment="Top"
+                    Click="RefreshGrid" Grid.Column="1" Width="63"/>
+            <Border Margin="253,5,5,5" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2">
+                <StackPanel Margin="9,1,9,9">
                     <Label Content="Edit Car" FontWeight="Bold"
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center" Margin="5"/>
@@ -90,20 +67,22 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Content="Product Name"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding RegistrationNumber}"/>
-                        <Label Grid.Row="1" Grid.Column="0" Content="Description"/>
-                        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Vin}"/>
-                        <Label Grid.Row="2" Grid.Column="0" Content="Price"/>
-                        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Model}"/>
-                        <Label Grid.Row="3" Grid.Column="0" Content="Unit"/>
-                        <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding Brand}"/>
-                        <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Click="UpdateItem"
+                        <Label Grid.Row="0" Grid.Column="0" Content="Registration Number"/>
+                        <TextBox Grid.Row="0" Text="{Binding RegistrationNumber}" Grid.ColumnSpan="2" Margin="184,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Vin"/>
+                        <TextBox Grid.Row="1" Text="{Binding Vin}" Grid.ColumnSpan="2" Margin="184,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="Model"/>
+                        <TextBox Grid.Row="2" Text="{Binding Model}" Grid.ColumnSpan="2" Margin="184,0,0,26" Grid.RowSpan="2"/>
+                        <Label Grid.Row="3" Grid.Column="0" Content="Brand"/>
+                        <TextBox Grid.Row="3" Text="{Binding Brand}" Grid.ColumnSpan="2" Margin="184,0,0,30" Grid.RowSpan="2"/>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Width="150" Click="UpdateCar"
                                 Content="Edit" Margin="5"
                             HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
             </Border>
+            <Button Content="Progres bar" HorizontalAlignment="Left" Margin="81,80,0,0" VerticalAlignment="Top"
+                    Click="OpenProgressBarWindow" Height="49" Width="106"/>
         </Grid>
     </Grid>
 </Window>

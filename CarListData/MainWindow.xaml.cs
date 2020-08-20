@@ -24,31 +24,20 @@ namespace CarListData
         CarList NewCar = new CarList();
         CarList selectedCar = new CarList();
 
-
         public MainWindow(CarListDbContext context)
         {
             this.context = context;
             InitializeComponent();
             GetCars();
-            NewCarGrid.DataContext = NewCar;
         }
 
 
-        private void GetCars()
+        public void GetCars()
         {
-            CarDG.ItemsSource = context.Cars.ToList();
+            CarDG.ItemsSource = context.CarList.ToList();
         }
 
-        private void AddItem(object s, RoutedEventArgs e)
-        {
-            context.Cars.Add(NewCar);
-            context.SaveChanges();
-            GetCars();
-            NewCar = new CarList();
-            NewCarGrid.DataContext = new CarList();
-        }
-
-        private void UpdateItem(object s, RoutedEventArgs e)
+        private void UpdateCar(object s, RoutedEventArgs e)
         {
             context.Update(selectedCar);
             context.SaveChanges();
@@ -64,9 +53,26 @@ namespace CarListData
         private void DeleteCar(object s, RoutedEventArgs e)
         {
             var productToDelete = (s as FrameworkElement).DataContext as CarList;
-            context.Cars.Remove(productToDelete);
+            context.CarList.Remove(productToDelete);
             context.SaveChanges();
             GetCars();
+        }
+
+        private void AddCarWindow(object sender, RoutedEventArgs e)
+        {
+            AddCarWindow addCarWindow = new AddCarWindow(context);
+            addCarWindow.Show();
+        }
+
+        private void RefreshGrid(object sender, RoutedEventArgs e)
+        {
+            GetCars();
+        }
+
+        private void OpenProgressBarWindow(object sender, RoutedEventArgs e)
+        {
+            ProgresBarWindow progresBarWindow = new ProgresBarWindow();
+            progresBarWindow.Show();
         }
     }
 }
