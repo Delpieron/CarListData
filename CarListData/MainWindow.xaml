@@ -49,7 +49,13 @@
                             HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
             <Button Content="Refresh" HorizontalAlignment="Left" Margin="314,-228,0,0" VerticalAlignment="Top"
-                    Click="RefreshGrid" Grid.Column="1" Width="63"/>
+                    Click="RefreshGridButton" Grid.Column="1" Width="63" Height="20"/>
+            <Button HorizontalAlignment="Left" Margin="199,-228,0,0" VerticalAlignment="Top" 
+                    Content="Print"
+                    Click="PrintGridButton" Grid.Column="1" Width="63" Height="20"/>
+            <StackPanel/>
+
+
             <Border Margin="253,5,5,5" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="2">
                 <StackPanel Margin="9,1,9,9">
                     <Label Content="Edit Car" FontWeight="Bold"

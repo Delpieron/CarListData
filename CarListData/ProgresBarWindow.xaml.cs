@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,47 +21,32 @@ namespace CarListData
     /// </summary>
     public partial class ProgresBarWindow : Window
     {
-        private bool IsWorking { get; set; }
+        public bool CancelTask { get; set; }
         public ProgresBarWindow()
         {
             InitializeComponent();
-            IsWorking = true;
+            CancelTask = false;
         }
 
-        private void Window_ContentRendered(object sender, EventArgs e)
+        private async void Window_ContentRenderedAsync(object sender, EventArgs e)
         {
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += Worker_DoWork;
-            worker.ProgressChanged += Worker_ProgressChanged;
-
-            worker.RunWorkerAsync();
+            await ProgressAsync();
         }
-
-        private void Worker_DoWork(object sender, EventArgs e)
+        async Task ProgressAsync()
         {
-                for (int i = 0; i < 100; i++)
+            for (int i = 0; i <= 100; i++)
+            {
+                await Task.Delay(10);
+                Pbar.Value = i;
+                if (CancelTask == true)
                 {
-                    (sender as BackgroundWorker).ReportProgress(i);
-                    Thread.Sleep(100);
-                    if (!IsWorking)
-                    {
-                    break;
-                    
-                    }
+                    Close();
                 }
-        } 
-
-        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+            }
+        }        
+        private void CancelTaskButton(object sender, RoutedEventArgs e)
         {
-            
-            Pbar.Value = e.ProgressPercentage;
-        }
-
-        private void CancelProgress(object sender, RoutedEventArgs e)
-        {
-            IsWorking = false;
-            Close();
+            CancelTask = true;
         }
     }
 }

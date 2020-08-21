@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Xps.Packaging;
 
 namespace CarListData
 {
@@ -19,9 +22,11 @@ namespace CarListData
     /// Logika działania okna głównego
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
+
         readonly CarListDbContext context;
         CarList selectedCar = new CarList();
+        // AddCarWindow carWindow = new AddCarWindow(context);
 
         public MainWindow(CarListDbContext context)
         {
@@ -30,7 +35,7 @@ namespace CarListData
             GetCars();
         }
 
-
+        
         public void GetCars()
         {
             CarDG.ItemsSource = context.CarList.ToList();
@@ -70,9 +75,28 @@ namespace CarListData
             progresBarWindow.Show();
         }
         
-        private void RefreshGrid(object sender, RoutedEventArgs e)
+        private void RefreshGridButton(object sender, RoutedEventArgs e)
         {
             GetCars();
+        }
+
+        private void PrintGridButton(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            try
+            {
+                IsEnabled = false;
+                if (printDialog.ShowDialog() == true)
+                {
+
+                    printDialog.PrintVisual(CarDG, "CarTable");
+                }
+            }
+            finally
+            {
+                IsEnabled = true;
+            }
+
         }
     }
 }
