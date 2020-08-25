@@ -30,6 +30,7 @@ namespace CarListData
 
         private void AddCar(object sender, RoutedEventArgs e)
         {
+            
             ErrorWindow errorWindow = new ErrorWindow();
 
             //jezeli vin lub numer rejestracyjny jest niepoprawny wyswietla okno z bledem

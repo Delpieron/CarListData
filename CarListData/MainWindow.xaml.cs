@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Xps.Packaging;
+using System.Xml;
 
 namespace CarListData
 {
@@ -74,28 +75,30 @@ namespace CarListData
             ProgresBarWindow progresBarWindow = new ProgresBarWindow();
             progresBarWindow.Show();
         }
-        
+
         private void RefreshGridButton(object sender, RoutedEventArgs e)
         {
             GetCars();
         }
-
         private void PrintGridButton(object sender, RoutedEventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            try
-            {
-                IsEnabled = false;
-                if (printDialog.ShowDialog() == true)
-                {
+            new Printing();
 
-                    printDialog.PrintVisual(CarDG, "CarTable");
-                }
-            }
-            finally
-            {
-                IsEnabled = true;
-            }
+
+            //PrintDialog printDialog = new PrintDialog();
+            //try
+            //{
+            //    IsEnabled = false;
+            //    if (printDialog.ShowDialog() == true)
+            //    {
+
+            //        printDialog.PrintVisual(CarDG, "CarTable");
+            //    }
+            //}
+            //finally
+            //{
+            //    IsEnabled = true;
+            //}
 
         }
     }
