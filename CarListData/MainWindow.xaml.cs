@@ -82,7 +82,7 @@ namespace CarListData
         }
         private void PrintGridButton(object sender, RoutedEventArgs e)
         {
-            new Printing();
+            new Printing(context).Print();
 
 
             //PrintDialog printDialog = new PrintDialog();
