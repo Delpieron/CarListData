@@ -35,7 +35,15 @@ namespace CarListData
             ev.Graphics.DrawString(titleLine, printFont, Brushes.Black, titlePosX, topMargin, new StringFormat());
             // Iterate over the lis of cars, printing each line.
             foreach (var car in cars)
-            {
+            {   
+            // If more lines exist, print another page.
+            if (count > linesPerPage)
+                {
+                    ev.HasMorePages = true;
+                    return;
+                }
+                
+
                 string line = car.CarId + "  |  " + car.RegistrationNumber + "  |  " + car.Vin + "  |  " + car.Model + "  |  " + car.Brand;
 
                 float yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
@@ -43,11 +51,8 @@ namespace CarListData
                 count++;
             }
 
-            // If more lines exist, print another page.
-            if (count > linesPerPage)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
+            ev.HasMorePages = false;
+
         }
 
         public void Print()
