@@ -39,14 +39,18 @@ namespace CarListData
                 await Task.Delay(10);
                 Pbar.Value = i;
                 if (CancelTask == true)
-                {
                     Close();
-                }
             }
-        }        
+            this.cancel.Content = "zamknij";
+
+        }
         private void CancelTaskButton(object sender, RoutedEventArgs e)
         {
             CancelTask = true;
+            if (Pbar.Value == 100)
+            {
+                this.Close();
+            }
         }
     }
 }

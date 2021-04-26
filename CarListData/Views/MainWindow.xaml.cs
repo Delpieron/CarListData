@@ -34,6 +34,7 @@ namespace CarListData
             this.context = context;
             InitializeComponent();
             GetCars();
+            UpdateCarGrid.IsEnabled = false;
         }
 
         
@@ -47,12 +48,18 @@ namespace CarListData
             context.Update(selectedCar);
             context.SaveChanges();
             GetCars();
+            ClearUpdateCarGrid();
         }
-
+        private void ClearUpdateCarGrid()
+        {
+            UpdateCarGrid.DataContext = null;
+            UpdateCarGrid.IsEnabled = false;
+        }
         private void SelectCarToEdit(object s, RoutedEventArgs e)
         {
             selectedCar = (s as FrameworkElement).DataContext as CarList;
             UpdateCarGrid.DataContext = selectedCar;
+            UpdateCarGrid.IsEnabled = true;
         }
 
         private void DeleteCar(object s, RoutedEventArgs e)
@@ -83,7 +90,6 @@ namespace CarListData
         private void PrintGridButton(object sender, RoutedEventArgs e)
         {
             new Printing(context).Print();
-
 
             //PrintDialog printDialog = new PrintDialog();
             //try

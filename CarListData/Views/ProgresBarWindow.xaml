@@ -16,7 +16,7 @@
         <TextBlock Text="{Binding ElementName=Pbar, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <TextBlock HorizontalAlignment="Center" Margin="0,102,0,0" Text="Progress Bar" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Cancel" Name="cancel" HorizontalAlignment="Left" Margin="392,339,0,0" VerticalAlignment="Top" Click="CancelTaskButton" />
+        <Button Content="Cancel" Name="cancel" HorizontalAlignment="Center" Margin="0,372,0,0" VerticalAlignment="Top" Click="CancelTaskButton" />
 
     </Grid>
 </Window>
